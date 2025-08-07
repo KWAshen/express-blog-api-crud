@@ -1,9 +1,16 @@
+const post = require('./data/posts.js');
+
 const index = (req,res) => {
-  res.send("Welcome to the Post Controller");
+  res.json(post);
 }
 
 const show =(req,res) => {
   res.send(`Showing post with ID: ${req.params.id}`);
+
+
+const post = posts.find(item => item.id === id );
+
+res.json(post);
 }
 
 const store = (req,res) => {
@@ -19,7 +26,11 @@ const modify = (req,res) => {
 }
 
 const destroy = (req,res) =>{
-  res.send(`Post with ID: ${req.params.id} has been deleted`);
+  const post = post.find(item=> item.id === id);
+
+  posts.splice(posts.indexOf(post),1);
+  res.sendStatus(204);
+  
 }
 
 module.exports = {
